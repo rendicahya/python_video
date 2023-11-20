@@ -59,7 +59,7 @@ for frame in frames:
 writer.release()
 ```
 
-3. `get_video_frames()`
+3. `video_frames()`
 
 Returns a frame generator from the specified video. Available readers are `"opencv"` (default), `"moviepy"`, `"pyav"`, `"decord"`.
 
@@ -69,7 +69,7 @@ from python_video import video_writer_like
 
 path = "/path/to/video"
 # or path = Path("/path/to/video")
-frames = get_video_frames(path)
+frames = video_frames(path, reader="opencv")
 
 for frame in frames:
     # ...
