@@ -3,7 +3,7 @@
 A Python library for video-related tasks. 
 
 ## Dependencies
-```bash
+```git
 pip install opencv-python-headless moviepy decord av
 ```
 
@@ -46,7 +46,7 @@ Output:
 Returns an OpenCV video writer with the same properties as the specified video.
 
 Usage:
-```
+```python
 from python_video import video_writer_like
 
 path = "/path/to/video"
