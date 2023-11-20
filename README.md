@@ -13,7 +13,7 @@ This library should be used as a git submodule:
 git submodule add https://github.com/rendicahya/python_video.git
 ```
 
-## Available Function
+## Available Functions
 1. `video_info()`
 
 Returns a dictionary containing information about a video:
@@ -30,7 +30,7 @@ from python_video import video_info
 from pathlib import Path
 
 path = "/path/to/video"
-# of path = Path("/path/to/video")
+# or path = Path("/path/to/video")
 info = video_info(path, reader="opencv")
 
 print(info)
@@ -42,5 +42,22 @@ Output:
 ```
 
 2. `video_writer_like()`
-3. `get_video_frames()`
-4. `frames_to_video()`
+
+Returns an OpenCV video writer with the same properties as the specified video.
+
+Usage:
+```
+from python_video import video_writer_like
+
+path = "/path/to/video"
+# or path = Path("/path/to/video")
+writer = video_writer_like(path)
+
+for frame in frames:
+  writer.write(frame)
+
+writer.release()
+```
+
+4. `get_video_frames()`
+5. `frames_to_video()`
