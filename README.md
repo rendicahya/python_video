@@ -57,7 +57,7 @@ for frame in frames:
     # ...
 ```
 
-To grab all frames at once, cast to a `list`:
+To grab all frames at once, cast to a `list`. This should be avoided, though, as it inefficiently loads all frames onto memory:
 ```python
 frames = list(get_video_frames(path))
 ```
