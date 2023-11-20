@@ -92,12 +92,13 @@ path = "/path/to/target/video"
 frames_to_video(frames, path, writer="opencv", fps=30, codec="mp4v")
 ```
 
-Combining with `video_info()` and `get_video_frames()` to read frames from a video and write them to another video:
+Combining with `video_info()` and `video_frames()` to read frames from a video and write them to another video:
 ```python
 src_path = "/path/to/target/video-src.mp4"
 # or src_path = Path("/path/to/target/video-src.mp4")
 
 info = video_info(src_path)
+frames = video_frames(src_path)
 
 dst_path = "/path/to/target/video-dst.mp4"
 # or dst_path = Path("/path/to/target/video-dst.mp4")
