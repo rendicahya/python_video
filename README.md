@@ -3,13 +3,13 @@
 A Python library for video-related tasks. 
 
 ## Dependencies
-```git
+```shell
 pip install opencv-python-headless moviepy decord av
 ```
 
 ## Installation
 This library should be used as a git submodule:
-```bash
+```shell
 git submodule add https://github.com/rendicahya/python_video.git
 ```
 
@@ -54,7 +54,7 @@ path = "/path/to/video"
 writer = video_writer_like(path)
 
 for frame in frames:
-  writer.write(frame)
+    writer.write(frame)
 
 writer.release()
 ```
