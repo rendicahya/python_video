@@ -41,25 +41,7 @@ Output:
 
 ```
 
-2. `video_writer_like()`
-
-Returns an OpenCV video writer with the same properties as the specified video.
-
-Usage:
-```python
-from python_video import video_writer_like
-
-path = "/path/to/video"
-# or path = Path("/path/to/video")
-writer = video_writer_like(path)
-
-for frame in frames:
-    writer.write(frame)
-
-writer.release()
-```
-
-3. `video_frames()`
+2. `video_frames()`
 
 Returns a frame generator from the specified video. Available readers are `"opencv"` (default), `"moviepy"`, `"pyav"`, `"decord"`.
 
@@ -78,6 +60,24 @@ for frame in frames:
 To grab all frames at once, cast to a `list`:
 ```python
 frames = list(get_video_frames(path))
+```
+
+3. `video_writer_like()`
+
+Returns an OpenCV video writer with the same properties as the specified video.
+
+Usage:
+```python
+from python_video import video_writer_like
+
+path = "/path/to/video"
+# or path = Path("/path/to/video")
+writer = video_writer_like(path)
+
+for frame in frames:
+    writer.write(frame)
+
+writer.release()
 ```
 
 4. `frames_to_video()`
