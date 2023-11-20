@@ -1,11 +1,16 @@
 # Python Video Utilities
 
-A Python library for video-related tasks. Should be used as a git submodule:
-`git submodule add https://github.com/rendicahya/python_video.git`
+A Python library for video-related tasks. 
 
 ## Dependencies
 ```bash
 pip install opencv-python-headless moviepy decord av
+```
+
+## Installation
+This library should be used as a git submodule:
+```bash
+git submodule add https://github.com/rendicahya/python_video.git
 ```
 
 ## Available Function
