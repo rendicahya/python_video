@@ -17,10 +17,10 @@ git submodule add https://github.com/rendicahya/python_video.git
 1. `video_info()`
 
 Returns a dictionary containing information about a video:
-- Width
-- Height
+- width
+- height
 - FPS
-- Number of frames
+- number of frames
 
 Available readers are `"opencv"` (default) and `"moviepy"`. `path` can be either a string or a `PosixPath`.
 
