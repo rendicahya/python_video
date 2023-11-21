@@ -16,7 +16,6 @@ git submodule add https://github.com/rendicahya/python_video.git
 ## Available Functions
 
 ### 1. `video_info()`
-
 Returns a dictionary containing information about a video:
 - width
 - height
@@ -43,7 +42,6 @@ Output:
 ```
 
 ### 2. `video_frames()`
-
 Returns a frame generator from the specified video. Available readers are `"opencv"` (default), `"moviepy"`, `"pyav"`, and `"decord"`.
 
 Usage:
@@ -64,7 +62,6 @@ frames = list(get_video_frames(path))
 ```
 
 ### 3. `video_writer_like()`
-
 Returns an OpenCV video writer with the same properties as the specified video.
 
 Usage:
@@ -82,7 +79,6 @@ writer.release()
 ```
 
 ### 4. `frames_to_video()`
-
 Writes images frames to a video file. Available writers are `"opencv"` (default) and `"moviepy"`.
 
 Usage:
