@@ -5,12 +5,12 @@ from typing import Union
 import av
 import cv2
 from decord import VideoReader, cpu
-from python_assert import assert_dir, assert_file
+from assertpy.assertpy import assert_that
 from moviepy.editor import ImageSequenceClip, VideoFileClip
 
 
 def video_info(path: Union[Path, str], reader: str = "opencv"):
-    assert_file(path)
+    assert_that(path).is_file().is_readable()
 
     assert reader in (
         "opencv",
@@ -34,7 +34,7 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
 
 
 def video_writer_like(path: Union[Path, str], format: str = "mp4"):
-    assert_file(path)
+    assert_that(path).is_file().is_readable()
 
     fourcc_formats = {"mp4": "mp4v"}
     fourcc_format = fourcc_formats[format]
@@ -53,7 +53,7 @@ def video_writer_like(path: Union[Path, str], format: str = "mp4"):
 
 
 def video_frames(path: Union[Path, str], reader: str = "opencv"):
-    assert_file(path)
+    assert_that(path).is_file().is_readable()
 
     assert reader in (
         "opencv",
@@ -103,7 +103,7 @@ def frames_to_video(
         # "pyav",
     ), 'Writer must be one of ["opencv", "moviepy"]'
 
-    assert_dir(Path(target).parent)
+    assert_that(Path(target).parent).is_directory().is_readable()
 
     if writer == "opencv":
         fourcc = cv2.VideoWriter_fourcc(*codec)
