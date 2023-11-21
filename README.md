@@ -8,7 +8,7 @@ pip install opencv-python-headless moviepy decord av
 ```
 
 ## Installation
-This library should be used as a git submodule:
+This library is designed to be used as a git submodule:
 ```bash
 git submodule add https://github.com/rendicahya/python_video.git
 ```
@@ -22,7 +22,7 @@ Returns a dictionary containing information about a video:
 - FPS
 - number of frames
 
-Available readers are `"opencv"` (default) and `"moviepy"`. `path` can be either a string or a `PosixPath`.
+Available readers are `"opencv"` (default) and `"moviepy"`. `path` can be either a string or a `pathlib`'s `PosixPath`.
 
 Usage:
 ```python
@@ -43,7 +43,7 @@ Output:
 
 2. `video_frames()`
 
-Returns a frame generator from the specified video. Available readers are `"opencv"` (default), `"moviepy"`, `"pyav"`, `"decord"`.
+Returns a frame generator from the specified video. Available readers are `"opencv"` (default), `"moviepy"`, `"pyav"`, and `"decord"`.
 
 Usage:
 ```python
@@ -82,7 +82,7 @@ writer.release()
 
 4. `frames_to_video()`
 
-Writes the specified frames to a video file. Available writers are `"opencv"` (default) and `"moviepy"`.
+Writes images frames to a video file. Available writers are `"opencv"` (default) and `"moviepy"`.
 
 Usage:
 ```python
