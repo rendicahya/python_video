@@ -139,9 +139,10 @@ def frames_to_video(
 
         video_writer.release()
     elif writer == "moviepy":
-        ImageSequenceClip(list(frames), fps=fps).write_videofile(
-            str(target), logger=None
-        )
+        frames = list(frames)
+
+        if len(frames) > 0:
+            ImageSequenceClip(frames, fps=fps).write_videofile(str(target), logger=None)
     # elif writer == "pyav":
     #     with av.open(str(target), "w", format="mp4") as container:
     #         out_stream = container.add_stream("h264", fps)
