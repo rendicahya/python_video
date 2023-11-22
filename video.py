@@ -33,7 +33,7 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
     return {"width": width, "height": height, "fps": fps, "n_frames": n_frames}
 
 
-def video_writer_like(path: Union[Path, str], format: str = "mp4"):
+def video_writer_like(path: Union[Path, str], target: Union[Path, str], format: str = "mp4"):
     assert_that(path).is_file().is_readable()
 
     fourcc_formats = {"mp4": "mp4v"}
@@ -45,7 +45,7 @@ def video_writer_like(path: Union[Path, str], format: str = "mp4"):
     fps = info["fps"]
 
     return cv2.VideoWriter(
-        str(path),
+        str(target),
         fourcc,
         fps,
         (width, height),
