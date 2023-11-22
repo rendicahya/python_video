@@ -33,7 +33,9 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
     return {"width": width, "height": height, "fps": fps, "n_frames": n_frames}
 
 
-def video_writer_like(path: Union[Path, str], target: Union[Path, str], format: str = "mp4"):
+def video_writer_like(
+    path: Union[Path, str], target: Union[Path, str], format: str = "mp4"
+):
     assert_that(path).is_file().is_readable()
 
     fourcc_formats = {"mp4": "mp4v"}
@@ -112,10 +114,10 @@ def frames_to_video(
             if first_frame is None:
                 return
         else:
-            if len(frames)==0:
+            if len(frames) == 0:
                 return
-            
-            first_frame=frames[0]
+
+            first_frame = frames[0]
 
         fourcc = cv2.VideoWriter_fourcc(*codec)
         height, width = first_frame.shape[:2]
@@ -137,7 +139,9 @@ def frames_to_video(
 
         video_writer.release()
     elif writer == "moviepy":
-        ImageSequenceClip(list(frames), fps=fps).write_videofile(str(target), logger=None)
+        ImageSequenceClip(list(frames), fps=fps).write_videofile(
+            str(target), logger=None
+        )
     # elif writer == "pyav":
     #     with av.open(str(target), "w", format="mp4") as container:
     #         out_stream = container.add_stream("h264", fps)
