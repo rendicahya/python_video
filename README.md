@@ -68,9 +68,13 @@ Usage:
 ```python
 from python_video import video_writer_like
 
-path = "/path/to/video"
-# or path = Path("/path/to/video")
-writer = video_writer_like(path)
+src_path = "/path/to/src-video.mp4"
+# or src_path = Path("/path/to/src-video.mp4")
+
+dst_path = "/path/to/dst-video.mp4"
+# or dst_path = Path("/path/to/dst-video.mp4")
+
+writer = video_writer_like(src_path, target=dst_path)
 
 for frame in frames:
     writer.write(frame)
