@@ -106,8 +106,18 @@ def frames_to_video(
     assert_that(Path(target).parent).is_directory().is_readable()
 
     if writer == "opencv":
+        if type(frames) == types.GeneratorType:
+            first_frame = next(frames, None)
+
+            if first_frame is None:
+                return
+        else:
+            if len(frames)==0:
+                return
+            
+            first_frame=frames[0]
+
         fourcc = cv2.VideoWriter_fourcc(*codec)
-        first_frame = next(frames) if type(frames) == types.GeneratorType else frames[0]
         height, width = first_frame.shape[:2]
 
         video_writer = cv2.VideoWriter(
