@@ -54,7 +54,7 @@ def video_writer_like(
     )
 
 
-def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool = False):
+def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool = True):
     assert_that(path).is_file().is_readable()
 
     assert reader in (
