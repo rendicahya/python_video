@@ -4,8 +4,8 @@ from typing import Union
 
 import av
 import cv2
-from decord import VideoReader, cpu
 from assertpy.assertpy import assert_that
+from decord import VideoReader, cpu
 from moviepy.editor import ImageSequenceClip, VideoFileClip
 
 
@@ -54,7 +54,7 @@ def video_writer_like(
     )
 
 
-def video_frames(path: Union[Path, str], reader: str = "opencv"):
+def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool = False):
     assert_that(path).is_file().is_readable()
 
     assert reader in (
@@ -73,7 +73,7 @@ def video_frames(path: Union[Path, str], reader: str = "opencv"):
             if not ret:
                 break
 
-            yield frame
+            yield cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) if bgr2rgb else frame
 
         cap.release()
     elif reader == "moviepy":
