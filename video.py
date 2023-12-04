@@ -55,6 +55,21 @@ def video_writer_like(
 
 
 def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool = True):
+    """
+    Generator function that yields frames from a video file using different video readers.
+
+    Args:
+    - path (Union[Path, str]): Path to the video file.
+    - reader (str, optional): Specifies the video reader library to use. Default is "opencv".
+        Available options: "opencv", "moviepy", "pyav", "decord".
+    - bgr2rgb (bool, optional): If True, converts BGR formatted frames to RGB. Default is True.
+
+    Yields:
+    - ndarray: Frames from the video file in RGB format (if specified) or in the original format.
+
+    Raises:
+    - AssertionError: If the path is not a readable file or if an invalid video reader is provided.
+    """
     assert_that(path).is_file().is_readable()
 
     assert reader in (
@@ -98,6 +113,7 @@ def frames_to_video(
     writer: str = "opencv",
     fps: int = 30,
     codec: str = "mp4v",
+    rgb2bgr: bool = True,
 ) -> None:
     assert writer in (
         "opencv",
@@ -129,13 +145,15 @@ def frames_to_video(
             (width, height),
         )
 
+        convert = lambda frame: cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+
         # If frames is a generator, the first frame has been
-        # extracted above (next(frames)), so it should be written
+        # extracted above (next(frames, None)), so it should be written
         if type(frames) == types.GeneratorType:
-            video_writer.write(first_frame)
+            video_writer.write(convert(first_frame) if rgb2bgr else first_frame)
 
         for frame in frames:
-            video_writer.write(frame)
+            video_writer.write(convert(frame) if rgb2bgr else frame)
 
         video_writer.release()
     elif writer == "moviepy":
@@ -143,6 +161,8 @@ def frames_to_video(
 
         if len(frames) > 0:
             ImageSequenceClip(frames, fps=fps).write_videofile(str(target), logger=None)
+        else:
+            print(f"Video {str(target)} not written because frames are empty.")
     # elif writer == "pyav":
     #     with av.open(str(target), "w", format="mp4") as container:
     #         out_stream = container.add_stream("h264", fps)
