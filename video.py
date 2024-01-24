@@ -11,11 +11,7 @@ from moviepy.editor import ImageSequenceClip, VideoFileClip
 
 def video_info(path: Union[Path, str], reader: str = "opencv"):
     assert_that(path).is_file().is_readable()
-
-    assert reader in (
-        "opencv",
-        "moviepy",
-    ), 'Reader must be one of ["opencv", "moviepy"]'
+    assert_that(reader).is_in("opencv", "moviepy")
 
     if reader == "opencv":
         video = cv2.VideoCapture(str(path))
@@ -37,6 +33,7 @@ def video_writer_like(
     path: Union[Path, str], target: Union[Path, str], format: str = "mp4"
 ):
     assert_that(path).is_file().is_readable()
+    assert_that(format).is_in("mp4")
 
     fourcc_formats = {"mp4": "mp4v"}
     fourcc_format = fourcc_formats[format]
@@ -71,13 +68,7 @@ def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool =
     - AssertionError: If the path is not a readable file or if an invalid video reader is provided.
     """
     assert_that(path).is_file().is_readable()
-
-    assert reader in (
-        "opencv",
-        "moviepy",
-        "pyav",
-        "decord",
-    ), 'Reader must be one of ["opencv", "moviepy", "pyav", "decord"]'
+    assert_that(reader).is_in("opencv", "moviepy", "pyav", "decord")
 
     if reader == "opencv":
         cap = cv2.VideoCapture(str(path))
@@ -115,12 +106,7 @@ def frames_to_video(
     codec: str = "mp4v",
     rgb2bgr: bool = True,
 ) -> None:
-    assert writer in (
-        "opencv",
-        "moviepy",
-        # "pyav",
-    ), 'Writer must be one of ["opencv", "moviepy"]'
-
+    assert_that(reader).is_in("opencv", "moviepy")
     assert_that(Path(target).parent).is_directory().is_readable()
 
     if writer == "opencv":
