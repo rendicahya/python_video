@@ -106,7 +106,7 @@ def frames_to_video(
     codec: str = "mp4v",
     rgb2bgr: bool = True,
 ) -> None:
-    assert_that(reader).is_in("opencv", "moviepy")
+    assert_that(writer).is_in("opencv", "moviepy")
     assert_that(Path(target).parent).is_directory().is_readable()
 
     if writer == "opencv":
