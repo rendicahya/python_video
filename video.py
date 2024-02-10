@@ -83,7 +83,7 @@ def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool =
 
         cap.release()
     elif reader == "moviepy":
-        with VideoFileClip(path) as clip:
+        with VideoFileClip(str(path)) as clip:
             for frame in clip.iter_frames():
                 yield frame
     elif reader == "pyav":
