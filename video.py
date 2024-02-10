@@ -87,7 +87,7 @@ def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool =
             for frame in clip.iter_frames():
                 yield frame
     elif reader == "pyav":
-        with av.open(path) as container:
+        with av.open(str(path)) as container:
             for frame in container.decode(video=0):
                 yield frame.to_ndarray(format="rgb24")
     elif reader == "decord":
