@@ -28,6 +28,8 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
         fps = clip.fps
         n_frames = clip.reader.nframes
 
+        clip.close()
+
     return {"width": width, "height": height, "fps": fps, "n_frames": n_frames}
 
 
