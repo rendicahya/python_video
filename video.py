@@ -1,7 +1,6 @@
 import types
 from pathlib import Path
 from typing import Union
-from warnings import deprecated
 
 import av
 import cv2
@@ -56,7 +55,6 @@ def video_writer_like(
     )
 
 
-@deprecated("Use mmcv.VideoReader() instead")
 def video_frames(path: Union[Path, str], reader: str = "opencv", bgr2rgb: bool = True):
     """
     Generator function that yields frames from a video file using different video readers.
