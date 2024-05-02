@@ -19,6 +19,8 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
         height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
         fps = video.get(cv2.CAP_PROP_FPS)
         n_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+
+        video.release()
     elif reader == "moviepy":
         clip = VideoFileClip(str(path))
         width = clip.w
