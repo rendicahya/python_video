@@ -106,7 +106,7 @@ def frames_to_video(
     frames: Union[list, types.GeneratorType],
     target: Union[Path, str] = "video.mp4",
     writer: str = "opencv",
-    fps: int = 30,
+    fps: float = 30.0,
     codec: str = "mp4v",
     rgb2bgr: bool = True,
 ) -> None:
