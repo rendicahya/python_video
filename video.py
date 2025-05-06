@@ -19,6 +19,7 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
         height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
         fps = video.get(cv2.CAP_PROP_FPS)
         n_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+        duration = n_frames / fps if fps > 0 else 0.0
 
         video.release()
     elif reader == "moviepy":
@@ -30,7 +31,13 @@ def video_info(path: Union[Path, str], reader: str = "opencv"):
 
         clip.close()
 
-    return {"width": width, "height": height, "fps": fps, "n_frames": n_frames}
+    return {
+        "width": width,
+        "height": height,
+        "fps": fps,
+        "n_frames": n_frames,
+        "duration": duration,
+    }
 
 
 def video_writer_like(
