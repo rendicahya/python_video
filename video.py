@@ -4,9 +4,10 @@ from typing import Union
 
 import av
 import cv2
-from assertpy.assertpy import assert_that
 from decord import VideoReader, cpu
-from moviepy.editor import ImageSequenceClip, VideoFileClip
+from moviepy import ImageSequenceClip, VideoFileClip
+
+from assertpy.assertpy import assert_that
 
 
 def video_info(path: Union[Path, str], reader: str = "opencv"):
