@@ -32,13 +32,6 @@ from pathlib import Path
 path = "/path/to/video"
 # or path = Path("/path/to/video")
 info = video_info(path, reader="opencv")
-
-print(info)
-```
-
-Output:
-```python
-
 ```
 
 ### 2. `video_frames()`
