@@ -30,7 +30,9 @@ from python_video import video_info
 from pathlib import Path
 
 path = "/path/to/video"
-# or path = Path("/path/to/video")
+# or:
+# path = Path("/path/to/video")
+
 info = video_info(path, reader="opencv")
 ```
 
