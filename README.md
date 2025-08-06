@@ -44,7 +44,9 @@ Usage:
 from python_video import video_writer_like
 
 path = "/path/to/video"
-# or path = Path("/path/to/video")
+# or:
+# path = Path("/path/to/video")
+
 frames = video_frames(path, reader="opencv")
 
 for frame in frames:
@@ -64,10 +66,12 @@ Usage:
 from python_video import video_writer_like
 
 src_path = "/path/to/src-video.mp4"
-# or src_path = Path("/path/to/src-video.mp4")
+# or:
+# src_path = Path("/path/to/src-video.mp4")
 
 dst_path = "/path/to/dst-video.mp4"
-# or dst_path = Path("/path/to/dst-video.mp4")
+# or:
+# dst_path = Path("/path/to/dst-video.mp4")
 
 writer = video_writer_like(src_path, target=dst_path)
 
@@ -83,7 +87,8 @@ Writes images frames to a video file. Available writers are `"opencv"` (default)
 Usage:
 ```python
 path = "/path/to/target/video"
-# or path = Path("/path/to/target/video")
+# or:
+# path = Path("/path/to/target/video")
 
 frames_to_video(frames, path, writer="opencv", fps=30, codec="mp4v")
 ```
