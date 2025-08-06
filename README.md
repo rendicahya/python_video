@@ -1,4 +1,4 @@
-# Python Video Utilities
+# Common Video Utilities
 
 A Python library for video-related tasks. 
 
